@@ -1,0 +1,15 @@
+@charset "ISO-8859-1";
+
+header{
+	background-color: "red";
+	background-size: 100%;
+}
+
+h1{
+	font-family: "Calibri";
+}
+
+footer{
+	background-color: "blue";
+	background-size: 100%;
+}

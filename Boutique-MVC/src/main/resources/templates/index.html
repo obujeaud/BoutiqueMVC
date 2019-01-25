@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{fragments/fragment :: layout (~{::body})}">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title th:text="${mainTitle}"></title>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th th:text="${design}"></th>
+				<th th:text="${prix}"></th>
+				<th th:text="${nb}"></th>
+				<th th:text="${add}"></th>
+			</tr>
+		</thead>
+		<tr th:each="item : ${list}">
+			<td th:text="${item.designationItem}"></td>
+			<td th:text="${item.prixItem}"></td>
+			<td><input type="text" value="1" /></td>
+		</tr>
+	</table>
+	<input type="button" th:value="${voirPanier}" onclick="javascript:addPanier()" />
+</body>
+</html>

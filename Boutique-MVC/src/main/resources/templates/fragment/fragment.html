@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="layout(template)">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" th:href="@{css/header.css}">
+<title></title>
+</head>
+<body>
+	<header>
+		<h1 th:text="${title}"></h1>
+	</header>
+	<th:block th:include="${template}" />
+	<footer>
+		<h5 th:text="${copyright}"></h5>
+	</footer>
+</body>
+</html>
