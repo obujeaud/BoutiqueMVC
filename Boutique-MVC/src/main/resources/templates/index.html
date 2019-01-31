@@ -1,26 +1,39 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	th:replace="~{fragments/fragment :: layout (~{::body})}">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragment/fragment :: layout (~{::body})}">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title th:text="${mainTitle}"></title>
+<title th:text="#{mainTitle}"></title>
 </head>
 <body>
+	<script>
+		function showCart() {
+			document.getElementById("cart").action = "panier/";
+			document.getElementById("cart").submit();
+		}
+		
+		function addItem(id){
+			document.getElementById("add").action = "ajout/"+id+"/";
+			document.getElementById("add").submit();
+		}
+	</script>
 	<table>
 		<thead>
 			<tr>
-				<th th:text="${design}"></th>
-				<th th:text="${prix}"></th>
-				<th th:text="${nb}"></th>
-				<th th:text="${add}"></th>
+				<th th:text="#{design}"></th>
+				<th th:text="#{prix}"></th>
+				<th th:text="#{add}"></th>
 			</tr>
 		</thead>
 		<tr th:each="item : ${list}">
 			<td th:text="${item.designationItem}"></td>
 			<td th:text="${item.prixItem}"></td>
-			<td><input type="text" value="1" /></td>
+			<td><a th:href="'javascript:addItem('+${item.code_item}+');'"><img th:src="@{/img/add.png}" /></a></td>
 		</tr>
 	</table>
-	<input type="button" th:value="${voirPanier}" onclick="javascript:addPanier()" />
+	
+	<form action="" method="post" id="add"></form>
+	<form action="" id="cart">
+		<input type="button" th:value="#{voirPanier}" onclick="javascript:showCart();" />
+	</form>
 </body>
 </html>

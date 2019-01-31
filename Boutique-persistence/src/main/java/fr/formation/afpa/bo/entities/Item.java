@@ -33,6 +33,16 @@ public class Item {
 		this.designationItem = designationItem;
 		this.prixItem = prixItem;
 	}
+	
+	
+
+
+	public Item(Long code_item, String designationItem, double prixItem) {
+		super();
+		this.code_item = code_item;
+		this.designationItem = designationItem;
+		this.prixItem = prixItem;
+	}
 
 
 	public Long getCode_item() {

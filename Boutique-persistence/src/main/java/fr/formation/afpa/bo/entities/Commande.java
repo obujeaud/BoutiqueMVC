@@ -41,6 +41,15 @@ public class Commande {
 		}
 	}
 
+	public Commande(Long idCommande, Set<NbItem> l) {
+		super();
+		this.idCommande = idCommande;
+		this.l = l;
+		for(NbItem n : l) {
+			setTotalPrice(getTotalPrice() + n.getItem().getPrixItem()*n.getNbItem());
+		}
+	}
+
 	public Long getIdCommande() {
 		return idCommande;
 	}

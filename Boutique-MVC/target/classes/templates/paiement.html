@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{fragment/fragment :: layout (~{::body})}">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title th:text="${mainTitle}"></title>
+</head>
+<body>
+
+<script>
+function confirmCard(){
+	
+	var e = document.getElementById("nbCard").value;
+	var f = document.getElementById("monthExpirationDate").value;
+	var g = document.getElementById("yearExpirationDate").value;
+	var reg = new RegExp('^[0-9]+$');
+	
+	if(e.match(reg) === null && g.match(reg) === null){
+		document.getElementById("bill").action="/payer/";
+		alert("Veuillez saisir uniquement des chiffres");
+	}else{
+		document.getElementById("bill").action="/billing/";
+	}
+	
+	if(f >= 1 && f <= 12){
+		document.getElementById("bill").action="/billing/";
+	}else{
+		document.getElementById("bill").action="/payer/";
+		alert("Veuillez saisir une date valide");
+	}
+	
+	document.getElementById("bill").submit();
+}
+</script>
+	<p th:text="#{total}"></p>
+	<p th:text="${total}"></p>
+	<form action="" id="bill" method="get">
+		<input type="text" value="" id="nbCard" maxlength="16" /> 
+		<input type="text" value="" id="monthExpirationDate" /> 
+		<input type="text" value="" id="yearExpirationDate" /> 
+		<input type="text" value="" id="cryptogramme" maxlength="3" /> 
+		<input type="submit" th:value="#{comm}" onclick="javascript:confirmCard();" id="pay" />
+	</form>
+</body>
+</html>

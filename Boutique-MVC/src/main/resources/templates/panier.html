@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragment/fragment :: layout (~{::body})}">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title th:text="${mainTitle}"></title>
+</head>
+<body>
+	<script>
+function deleteItem(id){
+	document.getElementById("del").action="/delete/"+id+"/";
+	document.getElementById("del").submit();
+}
+
+function updateItem(id, val){
+	document.getElementById("maj").action="/update/"+id+"/"+val+"/";
+	document.getElementById("maj").submit();
+}
+</script>
+	<table>
+		<tr th:each="nbitem : ${cart}">
+			<td th:text="${nbitem.item.designationItem}"></td>
+			<td th:text="${nbitem.item.prixItem}"></td>
+			<td th:text="${nbitem.nbItem}"></td>
+			<td><input type="text" th:id="${nbitem.idNbItem}" th:value="${nbitem.nbItem}" th:onfocusout="'javascript:updateItem('+${nbitem.idNbItem}+', this.value);'" /></td>
+			<td><a th:href="'javascript:deleteItem('+${nbitem.idNbItem}+');'"><img th:src="@{/img/delete.png}" /></a></td>
+		</tr>
+	</table>
+
+	<p th:text="#{total}"></p>
+	<p th:text="${total}"></p>
+
+	<form action="" id="del" method="post"></form>
+	
+	<form action="" id="maj" method="post"></form>
+
+	<form action="/payer" id="bill">
+		<input type="submit" th:value="#{payer}" />
+	</form>
+
+	<form action="/clear" id="clear">
+		<input type="submit" th:value="#{clear}" />
+	</form>
+
+	<form action="/">
+		<input type="submit" th:value="#{back}" />
+	</form>
+
+</body>
+</html>

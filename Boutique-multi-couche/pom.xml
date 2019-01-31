@@ -42,5 +42,6 @@
 		<module>Boutique-persistence</module>
 		<module>Boutique-business</module>
 		<module>Boutique-MVC</module>
+		<module>Boutique-service</module>
 	</modules>
 </project>

@@ -32,6 +32,13 @@ public class NbItem {
 		// TODO Auto-generated constructor stub
 	}
 
+	public NbItem(Long idNbItem, Item item, int numberItem) {
+		super();
+		this.idNbItem = idNbItem;
+		this.item = item;
+		this.numberItem = numberItem;
+	}
+
 	public NbItem(Item item, int nbItem) {
 		super();
 		this.item = item;

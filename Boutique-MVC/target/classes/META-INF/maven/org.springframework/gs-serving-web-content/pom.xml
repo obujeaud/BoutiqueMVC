@@ -7,7 +7,6 @@
 	<groupId>org.springframework</groupId>
 	<artifactId>gs-serving-web-content</artifactId>
 	<version>0.1.0</version>
-	<packaging>jar</packaging>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -37,7 +36,7 @@
 
 		<dependency>
 			<groupId>fr.formation.afpa</groupId>
-			<artifactId>Boutique-business</artifactId>
+			<artifactId>Boutique-service</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
