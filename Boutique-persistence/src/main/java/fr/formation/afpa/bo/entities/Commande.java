@@ -1,7 +1,11 @@
 package fr.formation.afpa.bo.entities;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,6 +31,9 @@ public class Commande {
 	private Set<NbItem> l;
 	
 	private double totalPrice;
+	
+	@Column(name = "date")
+	private Date date;
 
 	public Commande() {
 		super();
@@ -39,6 +46,10 @@ public class Commande {
 		for(NbItem n : l) {
 			setTotalPrice(getTotalPrice() + n.getItem().getPrixItem()*n.getNbItem());
 		}
+		String format = "dd/MM/yy H:mm:ss"; 
+		DateFormat f = new SimpleDateFormat(format);
+		 date = new Date();
+		 f.format(date);
 	}
 
 	public Commande(Long idCommande, Set<NbItem> l) {
@@ -48,6 +59,10 @@ public class Commande {
 		for(NbItem n : l) {
 			setTotalPrice(getTotalPrice() + n.getItem().getPrixItem()*n.getNbItem());
 		}
+		String format = "dd/MM/yy H:mm:ss"; 
+		DateFormat f = new SimpleDateFormat(format);
+		 date = new Date();
+		 f.format(date);
 	}
 
 	public Long getIdCommande() {
